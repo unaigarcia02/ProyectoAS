@@ -70,11 +70,7 @@ VALUES
   ('HP', '250 G6', 'Notebook', '15.6', '8', 575.00),
   ('Apple', 'MacBook Pro', 'Ultrabook', '15.4', '16', 2537.45),
   ('Apple', 'MacBook Pro', 'Ultrabook', '13.3', '8', 1803.60),
-  ('Acer', 'Aspire 3', 'Notebook', '15.6', '4', 400.00),
-  ('Apple', 'MacBook Pro', 'Ultrabook', '15.4', '16', 2139.97),
-  ('Apple', 'Macbook Air', 'Ultrabook', '13.3', '8', 1158.70),
-  ('Asus', 'ZenBook UX430UN', 'Ultrabook', '14', '16', 1495.00),
-  ('Acer', 'Swift 3', 'Ultrabook', '14', '8', 770.00);
+  ('Acer', 'Aspire 3', 'Notebook', '15.6', '4', 400.00);
 
 
 
