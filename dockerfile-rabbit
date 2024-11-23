@@ -1,0 +1,16 @@
+# Dockerfile-rabbit
+FROM rabbitmq:management
+
+# Habilitar plugins adicionales, como el de gestión
+RUN rabbitmq-plugins enable --offline rabbitmq_management
+
+# Exponer puertos necesarios para la gestión web y la comunicación AMQP
+EXPOSE 5672 15672
+
+# Variables de entorno opcionales para configuración automática
+ENV RABBITMQ_DEFAULT_USER=guest
+ENV RABBITMQ_DEFAULT_PASS=guest
+
+# Comando por defecto para iniciar RabbitMQ
+CMD ["rabbitmq-server"]
+

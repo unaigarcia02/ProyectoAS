@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: dockerfile-sql
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_DB=juegos
+    volumes:
+      - ./pagina/sql/juegos.sql:/docker-entrypoint-initdb.d/juegos.sql
+      - ./app/dataset:/app/dataset 
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - mynetwork
+      - frontend
+      - backend
+    env_file:
+      - ./.secrets.txt
+
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: dockerfile-web
+    environment:
+      - ALLOW_OVERRIDE=true 
+    ports:
+      - "8080:80"
+    depends_on:
+      - rabbitmq
+    networks:
+      - mynetwork
+    volumes:                       
+      - ./app/dataset:/app/dataset
+    env_file:
+      - ./.secrets.txt
+
+  kaggle-data:
+    container_name: kaggle
+    build:
+      context: .
+      dockerfile: dockerfile-kaggle
+    volumes:
+      - ./app/dataset:/app/dataset
+    networks:
+      - mynetwork
+    env_file:
+      - ./.secrets.txt
+
+  rabbitmq:
+    container_name: rabbitmq
+    build:
+      context: .
+      dockerfile: dockerfile-rabbit
+    image: rabbitmq:management
+    restart: always
+    ports:
+      - "5672:5672"  # Puerto de comunicación AMQP
+      - "15672:15672" # Puerto de la interfaz de gestión web de RabbitMQ
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - mynetwork
+
+networks:
+  frontend:
+  backend:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  data:
+  grafana-storage:
+  pg-data:
+  rabbitmq_data:
+

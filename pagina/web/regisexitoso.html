@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmación de Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4; /* Color gris de fondo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative; /* Posición relativa para elementos absolutos */
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            opacity: 0.2; /* Opacidad de las aspiradoras */
+            pointer-events: none; /* No afectar eventos del ratón */
+        }
+        body::before {
+            content: "";
+            background-size: 50px; /* Tamaño de las aspiradoras */
+            pointer-events: none; /* No afectar eventos del ratón */
+        }
+        .confirmation {
+            width: 300px;
+            background: #fff;
+            padding: 30px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .confirmation p {
+            margin-bottom: 20px;
+        }
+        .confirmation a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 20px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .confirmation a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation">
+        <h2>Registro exitoso</h2>
+        <p>Te has registrado correctamente.</p>
+        <a href="index.html">Volver</a>
+    </div>
+</body>
+</html>
+

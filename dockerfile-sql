@@ -1,0 +1,14 @@
+# Usar la imagen oficial de PostgreSQL como base
+FROM postgres:latest
+
+# Copiar el script de inicialización al contenedor
+COPY ./pagina/sql/juegos.sql /docker-entrypoint-initdb.d/
+
+# Establecer la variable de entorno para la inicialización de la base de datos
+ENV POSTGRES_USER=juegosacceso
+ENV POSTGRES_PASSWORD=admin
+ENV POSTGRES_DB=juegos
+
+# Exponer el puerto por defecto
+EXPOSE 5432
+

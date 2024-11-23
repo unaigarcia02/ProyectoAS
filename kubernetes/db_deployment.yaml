@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      volumes:
+        - name: postgres-volume
+          persistentVolumeClaim:
+            claimName: postgres-volume
+      containers:
+      - name: postgres
+        image: unaigarcia02/postgres:latest
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: postgres-volume
+          mountPath: /var/lib/postgresql/data
+
+

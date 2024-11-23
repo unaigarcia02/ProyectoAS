@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  replicas: 1  
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: php-apache
+        image: unaigarcia02/web:latest  
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: web-data
+          mountPath: /var/www/html/image
+      volumes:
+        - name: web-data
+          persistentVolumeClaim:
+            claimName: web-deployment
+

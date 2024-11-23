@@ -1,0 +1,35 @@
+# Dockerfile-php
+FROM php:7.4-apache
+
+# Instalar las dependencias necesarias para PostgreSQL, RabbitMQ y otras extensiones
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    git \
+    unzip \
+    librabbitmq-dev \
+    && docker-php-ext-install pgsql pdo_pgsql \
+    && apt-get install -y libssl-dev \
+    && docker-php-ext-install sockets \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN chown -R www-data:www-data /var/www/html && echo "chown executed"
+RUN chmod -R 755 /var/www/html && echo "chmod executed"
+COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
+
+
+
+
+# Copiar los archivos de tu aplicación al contenedor
+COPY ./composer.json /var/www/html/
+COPY ./pagina/web /var/www/html/
+
+# Instalar las dependencias con Composer
+RUN composer install
+
+# Habilitar el módulo de reescritura
+RUN a2enmod rewrite
+
