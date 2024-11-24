@@ -1,4 +1,4 @@
-Portátiles SoloG
+#Portátiles SoloG
 
 
 ## Tareas realizadas
@@ -20,7 +20,7 @@ Portátiles SoloG
 docker-compose up -d --build
 ```
 
-##Entramos en http://localhost:8080
+Entramos en http://localhost:8080
 
 
 ### Kubernetes
@@ -32,13 +32,13 @@ docker-compose up -d --build
 minikube start
 ```
 
-#### Instalam ingress
+#### Instalamos ingress
 
 ```bash
 minikube addons enable ingress
 ```
 
-#### Crear los kubernetes
+#### Creamos los kubernetes
 
 ```bash
 
