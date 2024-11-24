@@ -535,7 +535,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tema_id'], $_POST['re
 
 // Obtener todos los temas
 $temas = $pdo->query("SELECT * FROM Temas ORDER BY fecha_creacion DESC")->fetchAll(PDO::FETCH_ASSOC);
-if (isset($_COOKIE['nombre_usuario']) && $_COOKIE['nombre_usuario'] == 'hola') {
+if (isset($_COOKIE['nombre_usuario']) && $_COOKIE['nombre_usuario'] == 'ADMIN') {
     echo '<div style="padding: 20px;">
         <h2>Crear un nuevo tema</h2>
         <form method="POST">';
@@ -546,7 +546,7 @@ if (isset($_COOKIE['nombre_usuario']) && $_COOKIE['nombre_usuario'] == 'hola') {
 
 
 
-    // Si el usuario está autenticado, comprobar si el nombre de usuario es "hola"
+    // Si el usuario está autenticado, comprobar si el nombre de usuario es "admin"
 
         echo '<form method="POST">
                 <input type="text" name="titulo" placeholder="Título" required>

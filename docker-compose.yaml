@@ -9,15 +9,12 @@ services:
     environment:
       - POSTGRES_DB=juegos
     volumes:
-      - ./pagina/sql/juegos.sql:/docker-entrypoint-initdb.d/juegos.sql
-      - ./app/dataset:/app/dataset 
+      - data:/app/dataset 
       - pg-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
       - mynetwork
-      - frontend
-      - backend
     env_file:
       - ./.secrets.txt
 
@@ -35,7 +32,7 @@ services:
     networks:
       - mynetwork
     volumes:                       
-      - ./app/dataset:/app/dataset
+      - data:/app/dataset
     env_file:
       - ./.secrets.txt
 
@@ -45,7 +42,7 @@ services:
       context: .
       dockerfile: dockerfile-kaggle
     volumes:
-      - ./app/dataset:/app/dataset
+      - data:/app/dataset
     networks:
       - mynetwork
     env_file:
@@ -67,14 +64,11 @@ services:
       - mynetwork
 
 networks:
-  frontend:
-  backend:
   mynetwork:
     driver: bridge
 
 volumes:
   data:
-  grafana-storage:
   pg-data:
   rabbitmq_data:
 

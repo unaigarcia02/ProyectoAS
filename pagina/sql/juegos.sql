@@ -61,16 +61,7 @@ CREATE TABLE Respuestas (
 );
 
 INSERT INTO usuario (nombre, dni, fecha_nacimiento, email, password) 
-VALUES ( 'hola', '123456789X', '2024-11-13', 'kaka@gmail.com', '1234');
-
-INSERT INTO Productos (fabricante, modelo, tipo, tamaño, ram, precio)
-VALUES
-  ('Apple', 'MacBook Pro', 'Ultrabook', '13.3', '8', 1339.69),
-  ('Apple', 'Macbook Air', 'Ultrabook', '13.3', '8', 898.94),
-  ('HP', '250 G6', 'Notebook', '15.6', '8', 575.00),
-  ('Apple', 'MacBook Pro', 'Ultrabook', '15.4', '16', 2537.45),
-  ('Apple', 'MacBook Pro', 'Ultrabook', '13.3', '8', 1803.60),
-  ('Acer', 'Aspire 3', 'Notebook', '15.6', '4', 400.00);
+VALUES ( 'ADMIN', '123456789X', '2024-11-13', 'kaka@gmail.com', '1234');
 
 
 

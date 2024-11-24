@@ -20,5 +20,6 @@ RUN mkdir -p /root/.kaggle
 COPY ./pagina/kaggle/kagglescript.py /app/kagglescript.py
 
 # Ejecuta el script para descargar y procesar los datos
-CMD ["python3", "/app/kagglescript.py"]
+CMD ["sh", "-c", "python3 /app/kagglescript.py && tail -f /dev/null"]
+
 
