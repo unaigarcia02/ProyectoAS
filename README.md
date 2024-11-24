@@ -1,4 +1,4 @@
-#Portátiles SoloG
+# Portátiles SoloG
 
 
 ## Tareas realizadas
